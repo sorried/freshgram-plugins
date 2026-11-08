@@ -1,11 +1,11 @@
-name: package coverdrop
+name: package foxdrop
 
 on:
   workflow_dispatch:
   push:
     paths:
-      - "coverdrop/**"
-      - ".github/workflows/package-coverdrop.yml"
+      - "foxdrop/**"
+      - ".github/workflows/package-foxdrop.yml"
 
 permissions:
   contents: read
@@ -47,13 +47,13 @@ jobs:
 
       - name: package and verify plugin
         run: |
-          test -f coverdrop/manifest.json
-          freshGram/Telegram/plugins_host/build/fgpl_tool pack coverdrop coverdrop.fgpl
-          freshGram/Telegram/plugins_host/build/fgpl_tool verify coverdrop.fgpl
+          test -f foxdrop/manifest.json
+          freshGram/Telegram/plugins_host/build/fgpl_tool pack foxdrop foxdrop.fgpl
+          freshGram/Telegram/plugins_host/build/fgpl_tool verify foxdrop.fgpl
 
       - uses: actions/upload-artifact@v7
         with:
-          name: coverdrop-fgpl
-          path: coverdrop.fgpl
+          name: foxdrop-fgpl
+          path: foxdrop.fgpl
           if-no-files-found: error
           archive: false

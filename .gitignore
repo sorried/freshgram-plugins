@@ -4665,8 +4665,8 @@ wlf*
 *.vstf
 *.ucdb
 cov*/
-!coverdrop/
-!coverdrop/**
+!foxdrop/
+!foxdrop/**
 transcript*
 sc_dpiheader.h
 vsim.dbg
