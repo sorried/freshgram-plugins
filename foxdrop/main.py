@@ -1,10 +1,17 @@
+import random
 from urllib.parse import urlsplit
 
 import freshgram
 from freshgram import aio
 
 
-API_URL = "https://randomfox.ca/floof/"
+FOX_APIS = (
+    ("https://randomfox.ca/floof/", "image", "https://", {"randomfox.ca"}),
+    ("https://api.sefinek.net/api/v2/random/animal/fox", "message", "https://", {"cdn.sefinek.net"}),
+    ("https://api.some-random-api.com/animal/fox", "image", "https://", {"i.imgur.com"}),
+    ("https://api.some-random-api.com/img/fox", "link", "https://", {"i.imgur.com"}),
+    ("https://api.tinyfox.dev/img?animal=fox&json", "loc", "https://api.tinyfox.dev", {"api.tinyfox.dev"}),
+)
 MAX_IMAGE_SIZE = 16 * 1024 * 1024
 
 
@@ -24,45 +31,59 @@ async def show_notice(message):
 
 
 async def fetch_fox():
-    response = await aio.net.get(API_URL, headers={"Accept": "application/json"}, timeout=15000)
-    if not response.ok:
-        raise ValueError(f"Fox service unavailable: HTTP {response.status}.")
+    sources = list(FOX_APIS)
+    random.shuffle(sources)
+    errors = []
+    for api_url, image_field, image_prefix, hosts in sources:
+        try:
+            response = await aio.net.get(
+                api_url, headers={"Accept": "application/json"}, timeout=15000,
+            )
+            if not response.ok:
+                raise ValueError(f"API HTTP {response.status}")
+            try:
+                payload = response.json()
+            except ValueError as error:
+                raise ValueError("invalid JSON") from error
+            if not isinstance(payload, dict) or not isinstance(payload.get(image_field), str):
+                raise ValueError("image URL is missing")
 
-    try:
-        payload = response.json()
-    except ValueError as error:
-        raise ValueError("Fox service returned invalid JSON.") from error
-    if not isinstance(payload, dict) or not isinstance(payload.get("image"), str):
-        raise ValueError("Fox service did not return an image URL.")
+            image_url = payload[image_field]
+            if image_field == "loc" and image_url.startswith("/"):
+                image_url = image_prefix + image_url
+            if not image_url.isascii() or len(image_url) > 2048:
+                raise ValueError("invalid image URL")
+            try:
+                parsed = urlsplit(image_url)
+                valid_url = (
+                    parsed.scheme == "https"
+                    and parsed.hostname in hosts
+                    and parsed.port in (None, 443)
+                    and not parsed.username
+                    and not parsed.password
+                )
+            except ValueError as error:
+                raise ValueError("invalid image URL") from error
+            if not valid_url:
+                raise ValueError("image URL host is not allowed")
 
-    image_url = payload["image"]
-    if not image_url.isascii() or len(image_url) > 2048:
-        raise ValueError("Fox service returned an invalid image URL.")
-    try:
-        parsed = urlsplit(image_url)
-        valid_url = (
-            parsed.scheme == "https"
-            and parsed.hostname == "randomfox.ca"
-            and parsed.port in (None, 443)
-            and not parsed.username
-            and not parsed.password
-        )
-    except ValueError as error:
-        raise ValueError("Fox service returned an invalid image URL.") from error
-    if not valid_url:
-        raise ValueError("Fox service returned an invalid image URL.")
+            image_response = await aio.net.get(image_url, timeout=20000)
+            if not image_response.ok:
+                raise ValueError(f"image HTTP {image_response.status}")
+            data = image_response.body
+            if not data or len(data) > MAX_IMAGE_SIZE:
+                raise ValueError("image is empty or larger than 16 MiB")
+            filename = image_name(data)
+            if filename is None:
+                raise ValueError("unsupported image format")
+            return data, filename
+        except freshgram.Denied:
+            raise
+        except (ValueError, freshgram.FreshgramError) as error:
+            freshgram.log(f"foxdrop: source {api_url} failed: {error}")
+            errors.append(str(error))
 
-    image_response = await aio.net.get(image_url, timeout=20000)
-    if not image_response.ok:
-        raise ValueError(f"Could not download fox image: HTTP {image_response.status}.")
-
-    data = image_response.body
-    if not data or len(data) > MAX_IMAGE_SIZE:
-        raise ValueError("Fox image is empty or larger than 16 MiB.")
-    filename = image_name(data)
-    if filename is None:
-        raise ValueError("Fox service returned an unsupported image format.")
-    return data, filename
+    raise ValueError("All fox image sources failed. Please try again later.")
 
 
 @freshgram.on_menu("foxdrop", surface="composer")

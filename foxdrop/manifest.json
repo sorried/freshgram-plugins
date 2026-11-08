@@ -33,8 +33,8 @@
       {
         "id": "net.https",
         "reason": {
-          "default": "Requests a fox image URL and downloads its image bytes from randomfox.ca.",
-          "ru": "Запрашивает URL фото и загружает байты изображения с randomfox.ca."
+          "default": "Requests random fox image URLs from public APIs and downloads the selected photo.",
+          "ru": "Запрашивает случайные фото лис у публичных API и загружает выбранное изображение."
         }
       },
       {
@@ -82,6 +82,7 @@
   },
   "files": {
     "icons/fox.svg": "sha256-tiGYzBS/QNKeA6hcxybdBM+YxjQ53aFwLNbxmsW7N5o=",
-    "main.py": "sha256-ocPVr8kxb2LdpH1am6ltExiFyrIsrudrmEaAlzeE7eM="
+    "icons/icon.png": "sha256-K/J0IzwsM/A7laTUMSQCEBlwogjxROul9dR8UEmOXUc=",
+    "main.py": "sha256-mEXRRzMaAUjmjM7mWQMSDnL0AGYWKxj16aTEPZKsqsY="
   }
 }
