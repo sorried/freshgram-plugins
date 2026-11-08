@@ -1,0 +1,59 @@
+name: package coverdrop
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "coverdrop/**"
+      - ".github/workflows/package-coverdrop.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/checkout@v7
+        with:
+          repository: Snowy-Fluffy/freshGram
+          ref: c530acc8247d2bcf0e5f557b5f6e23acbcf72ba5
+          path: freshGram
+          persist-credentials: false
+
+      - name: install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes cmake g++ libssl-dev zlib1g-dev
+
+      - name: prepare wasmtime
+        run: |
+          mkdir -p freshGram/Telegram/plugins_host/third_party
+          curl --fail --location --retry 3 \
+            --output /tmp/wasmtime.tar.xz \
+            https://github.com/bytecodealliance/wasmtime/releases/download/v50.0.0/wasmtime-v50.0.0-x86_64-linux-c-api.tar.xz
+          echo "631643d8be5dac2a1abe026528f0ca18a515bce275bcfa7eb9731c9468a592f1  /tmp/wasmtime.tar.xz" | sha256sum --check
+          tar -xJf /tmp/wasmtime.tar.xz -C freshGram/Telegram/plugins_host/third_party
+
+      - name: build fgpl_tool
+        run: |
+          cmake -S freshGram/Telegram/plugins_host \
+            -B freshGram/Telegram/plugins_host/build \
+            -D CMAKE_BUILD_TYPE=Release \
+            -D FGPL_BUILD_TESTS=OFF
+          cmake --build freshGram/Telegram/plugins_host/build --target fgpl_tool --parallel 2
+
+      - name: package and verify plugin
+        run: |
+          test -f coverdrop/manifest.json
+          freshGram/Telegram/plugins_host/build/fgpl_tool pack coverdrop coverdrop.fgpl
+          freshGram/Telegram/plugins_host/build/fgpl_tool verify coverdrop.fgpl
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: coverdrop-fgpl
+          path: coverdrop.fgpl
+          if-no-files-found: error
+          archive: false
