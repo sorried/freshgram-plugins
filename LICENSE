@@ -1,0 +1,218 @@
+FRESHGRAM PLUGINS PROPRIETARY LICENSE
+
+Copyright (c) 2026 Maya Moon. All rights reserved.
+
+Effective date: November 8, 2026
+
+This license governs the original freshGram plugins and related materials that Maya Moon makes available in this repository, unless a file or a separate written agreement states different terms. It is intended to be presented with a clear notice before a plugin is downloaded or installed. Read it before installing, copying, or using a covered plugin. By affirmatively accepting these terms, or by installing, accessing, or using a covered plugin after receiving clear notice of them, you agree to these terms. If you do not agree, do not install, access, or use the plugin. A person distributing a plugin under this license must provide that notice and must not represent that this file alone proves a particular user's acceptance.
+
+1. Definitions
+
+"Licensor" means Maya Moon, the person identified as the creator of this repository in its README.
+
+"Plugin" means an original software plugin for the freshGram application that the Licensor makes available in this repository. It includes the plugin's source code, compiled modules, scripts, assets, documentation, configuration, and other files supplied with it, except for Excluded Materials.
+
+"Materials" means the Plugins and other original material that the Licensor makes available in this repository under this license.
+
+"You" means the individual accepting or exercising the license. If you accept for an organization, you represent that you have authority to bind it, and "You" also means that organization.
+
+"freshGram" means the third-party application that provides a runtime for freshGram plugins. It does not mean this repository or any Plugin.
+
+"Excluded Materials" means material that is not owned by the Licensor, including third-party software, libraries, media, trademarks, and other material identified in a separate notice or license. Excluded Materials remain subject to their own terms.
+
+2. Ownership and reservation of rights
+
+The Licensor retains all rights, title, and interest in the Materials, including copyright and other intellectual property rights, except for the limited permission expressly granted below. This license does not sell or transfer ownership of a Plugin or any part of the Materials.
+
+All rights not expressly granted to You are reserved. No permission arises by implication, estoppel, exhaustion, or otherwise, except where applicable law requires it.
+
+This license does not grant rights in the freshGram name or logo, Telegram names or marks, or any other third-party name, mark, service, or product. Those rights belong to their respective owners. The Licensor does not claim that a third party sponsors, approves, or is affiliated with a Plugin unless the Licensor expressly says so in writing.
+
+3. Limited license
+
+Subject to this license, the Licensor grants You a personal, limited, non-exclusive, non-transferable, non-sublicensable, and revocable license to:
+
+a. download a Plugin from a source designated by the Licensor;
+b. install and run an unmodified copy of that Plugin in freshGram for Your own personal, non-commercial use; and
+c. make one archival backup copy solely to restore Your authorized installation.
+
+You may allow freshGram and its plugin runtime to make the technical copies reasonably required to install, verify, load, run, update, or remove the Plugin. Such copies are permitted only for Your authorized use under this license. This permission does not authorize a separate person to use the Plugin or authorize You to distribute it.
+
+The license applies to the Plugin version You obtained. A later version is covered by this license only if the Licensor makes it available under these terms or expressly provides different terms for it.
+
+4. Restrictions
+
+Except for actions expressly allowed by this license or required by applicable law, You must not, and must not help another person to:
+
+a. publish, upload, mirror, host, redistribute, sell, rent, lease, lend, sublicense, transfer, or otherwise make any Material available to another person;
+b. include a Plugin or any part of the Materials in another product, package, repository, service, marketplace, archive, or collection;
+c. use a Plugin to provide a hosted, managed, consulting, or other service for another person, or use it for commercial activity;
+d. copy, reproduce, modify, translate, adapt, port, alter, or create derivative works from any Material;
+e. remove, obscure, or change a copyright, license, attribution, or other rights notice included with the Materials;
+f. reverse engineer, decompile, disassemble, decode, or attempt to discover the source code, structure, algorithms, or non-public interfaces of a compiled Plugin, except to the extent applicable law does not permit that restriction;
+g. bypass or interfere with technical restrictions, package integrity checks, signatures, access controls, or permission prompts that apply to a Plugin or freshGram;
+h. use a Plugin or the Materials to infringe another person's rights, violate applicable law, or facilitate unlawful conduct; or
+i. represent that You own, created, maintain, or are authorized to license a Material when You do not.
+
+The restrictions above do not prohibit a use that applicable law gives You a non-waivable right to make. Any such use remains limited to what the law permits.
+
+5. No redistribution right
+
+This license does not permit You to share a downloaded Plugin with another person, even without charge or in an unmodified form. If another person wants to use a Plugin, direct that person to a download source designated by the Licensor. The Licensor may separately authorize a distributor or marketplace in writing. Any such authorization is limited to the scope stated in that writing and does not grant You the same rights.
+
+You may not publish a fork, patch, modified build, extracted asset, or replacement package based on the Materials. You may send feedback or proposed changes to the Licensor. Sending a suggestion does not transfer ownership of the suggestion or give You permission to publish it as part of a Plugin. The Licensor may use feedback voluntarily provided to the Licensor without owing compensation, unless the parties agree otherwise in writing.
+
+6. Third-party components and notices
+
+A Plugin may include or rely on Excluded Materials. This license does not replace, narrow, or expand the license that applies to those materials. If a third-party license conflicts with this license as to the third-party component, the third-party license governs that component only.
+
+The Licensor does not grant any right to use third-party software outside the rights provided by its own license. You are responsible for complying with those terms when they apply to You. A third-party notice does not grant a license to the Licensor's original work, and this license does not grant a license to third-party work.
+
+7. freshGram and other services
+
+Plugins are designed to run in a separate application and runtime. Your use of freshGram, Telegram, network services, or other third-party products is governed by their respective terms and policies. This license does not change those terms or authorize conduct that they prohibit.
+
+You are responsible for reviewing a Plugin's description and requested permissions, deciding whether to install it, and choosing how to use it. The Licensor does not control freshGram's runtime, Telegram, third-party services, or the availability of any download source. A Plugin may stop working if one of those services, APIs, or applications changes, becomes unavailable, or blocks the Plugin.
+
+8. Updates, support, and availability
+
+The Licensor may change, update, suspend, or stop distributing any Material at any time. The Licensor has no obligation to provide updates, maintenance, support, compatibility with a particular version of freshGram, or continued access to a Plugin.
+
+An update may change functionality, permissions, compatibility, or stored data. Review the information presented by freshGram before accepting an update. This license does not require the Licensor to preserve backward compatibility or to migrate, recover, or retain data for You.
+
+9. Term and termination
+
+This license begins when You accept it or first exercise a right under it, whichever occurs first. It continues until it ends under this section.
+
+The Licensor may terminate the license if You materially breach it. If the breach can reasonably be cured, the Licensor will give You written notice and 30 days to cure it. The license terminates immediately if You do not cure the breach within that period. A breach that cannot reasonably be cured may result in immediate termination, subject to any notice or process required by applicable law.
+
+Upon termination, You must stop using the Materials and delete copies under Your control, except to the extent You must retain a copy under applicable law. Sections that by their nature should continue after termination, including ownership, restrictions on past conduct, disclaimers, liability limits, and dispute provisions, continue to apply.
+
+10. Warranty disclaimer
+
+To the maximum extent permitted by applicable law, the Materials are provided "AS IS" and "AS AVAILABLE." The Licensor disclaims all warranties and conditions, whether express, implied, or statutory, including warranties of merchantability, fitness for a particular purpose, title, non-infringement, accuracy, availability, and uninterrupted or error-free operation.
+
+The Licensor does not warrant that a Plugin will meet Your requirements, work with a particular device or freshGram version, remain available, preserve data, or be free of defects, vulnerabilities, or harmful code. You assume responsibility for deciding whether to use a Plugin and for keeping separate copies of data that You need.
+
+Nothing in this section removes a warranty or consumer right that applicable law does not allow the Licensor to disclaim.
+
+11. Limitation of liability
+
+To the maximum extent permitted by applicable law, the Licensor will not be liable for indirect, incidental, special, consequential, exemplary, or punitive damages, or for loss of profits, revenue, business, goodwill, data, or use, arising out of or related to the Materials or this license, even if the Licensor knew such loss was possible.
+
+To the maximum extent permitted by applicable law, the Licensor's total liability for all claims relating to the Materials or this license will not exceed the amount You paid directly to the Licensor for the specific Plugin giving rise to the claim during the 12 months before the event. If You paid no such amount, the cap is zero. This limit does not apply where applicable law prohibits it.
+
+Nothing in this license excludes or limits liability for fraud, intentional misconduct, death or personal injury caused by negligence, or any other liability that applicable law does not allow a party to exclude or limit. Nothing here removes rights that cannot lawfully be waived.
+
+12. Indemnity
+
+To the extent permitted by applicable law, You are responsible for claims, losses, and reasonable costs arising from Your unlawful use of the Materials or Your breach of this license. This section does not require You to indemnify the Licensor for the Licensor's own fraud, intentional misconduct, or liability that applicable law does not allow You to assume.
+
+13. Privacy and data
+
+This license does not make any promise about personal data practices beyond the terms expressly stated here. Before using a Plugin, review its description, code where available, permission requests, and any separate privacy notice supplied by the Licensor. Do not use a Plugin to process another person's information unless You have the rights and lawful basis required for that processing.
+
+14. No agency or partnership
+
+Nothing in this license creates an employment, agency, partnership, joint venture, franchise, or fiduciary relationship between You and the Licensor. You may not bind the Licensor or make commitments on the Licensor's behalf.
+
+15. Notices and contact
+
+You may contact the Licensor about permission requests, license questions, or a reported issue at:
+
+Telegram: https://t.me/dolboeborgbot
+GitHub: https://github.com/sorried
+
+A message through either service is a request for contact. It does not amend this license or grant permission unless the Licensor confirms that permission in writing.
+
+16. General terms
+
+This license is the complete agreement between You and the Licensor about the Materials it covers and replaces prior statements on that subject, except for a separate written agreement signed or expressly accepted by both parties. A separate agreement may grant additional rights or set different terms for specified Materials.
+
+If a court or other competent authority finds a provision unenforceable, it will be enforced to the maximum extent allowed, and the remaining provisions will remain in effect. A failure to enforce a provision is not a waiver of the right to enforce it later. A waiver must be in writing and applies only to the instance it identifies.
+
+You may not assign this license or any right under it without the Licensor's prior written consent. The Licensor may transfer this license as part of a transfer of the rights in the Materials, where applicable law permits. No person other than You and the Licensor receives rights under this license, except where applicable law provides otherwise.
+
+This license does not select a governing law or exclusive court. The law and forum applicable to a dispute will be determined under the conflict-of-laws rules and mandatory protections that apply to the parties and the dispute. The English text is the controlling text of this license. Any translation is provided for convenience only.
+
+17. Permission requests
+
+For permission to distribute, modify, use commercially, or otherwise use a Material beyond the limited license above, contact the Licensor using the contact details in Section 15. Permission is effective only when the Licensor gives it in writing and identifies the Material and permitted use.
+
+18. Scope of the license for each plugin
+
+This license applies separately to each Plugin and each version that the Licensor makes available under these terms. A permission granted for one Plugin does not grant a permission for another Plugin. A permission granted for one version does not automatically extend to a later version, fork, port, companion tool, source repository, or service.
+
+The license covers only the portions of a Plugin that the Licensor owns or is authorized to license. It does not claim ownership of an idea, programming language, public protocol, API, file format, unprotectable method, or other subject matter that copyright law does not protect. It does not grant rights in a separate work merely because that work is stored in the same repository or distributed in the same archive. A file-specific notice or separate written license may identify a different owner or different terms. For that file, follow the applicable notice.
+
+Where a Plugin contains code written by more than one person, this license covers only the rights the Licensor holds or is authorized to grant. The Licensor does not grant another contributor's rights by listing the Plugin in this repository. No contributor is required to provide support, updates, or permission beyond what that contributor has separately agreed to provide.
+
+19. Installation, copies, and technical operation
+
+The limited license permits the ordinary technical acts needed to install and use the Plugin as intended. This includes downloading the authorized package, storing it on a device, allowing freshGram to verify the package, making temporary copies in memory, loading code into the runtime, and allowing the runtime to create or remove files that are part of normal plugin operation. It also includes creating the single archival backup permitted in Section 3.
+
+These permissions do not authorize keeping multiple active installations for other people, placing the package in a shared directory for other users, running a public or commercial service with the Plugin, copying it to another plugin store, or using a copy after the license ends. Each individual user must obtain their own authorized copy, unless the Licensor grants a broader written permission.
+
+You must not alter a package, its manifest, its signature, its file hashes, or its publisher information to make it appear to be an unmodified or authorized release. You must not remove package safeguards or mislead freshGram or another user about the origin, version, permissions, or integrity of a Plugin.
+
+20. No rights by implication
+
+The limited license is the full extent of the permission granted. Viewing a public repository, reading source code, downloading a file, receiving a copy from another person, or finding a copy online does not by itself grant a right to publish, reuse, modify, or commercially exploit it. A public repository is not a dedication to the public domain and is not an open-source license unless a separate, explicit license says otherwise.
+
+No silence, delay, technical accessibility, failure to enforce a term in one instance, or failure to use a technical restriction waives any right. No course of dealing or industry practice expands the license. Any additional permission must be written, must identify who grants it, and must identify the Plugin or material and the permitted use.
+
+21. User conduct and compliance
+
+You are responsible for Your use of a Plugin and for the actions of anyone who uses it through an account or device under Your control. You must use the Plugin in compliance with applicable law and with the terms that govern freshGram, Telegram, and any service the Plugin contacts. You must not use it to send unlawful, abusive, deceptive, or unauthorized communications, access another person's account or data, evade a platform restriction, or interfere with a service.
+
+The Plugin's requested permissions describe access that freshGram may grant to the Plugin. A permission prompt is not a representation that every use of the Plugin is lawful or appropriate. You remain responsible for reviewing the requested access and deciding whether to grant it. Do not grant permissions or use functionality on behalf of another person without that person's authorization where required by law.
+
+You must not use a Plugin to collect, disclose, or process personal information unless You have the authority and legal basis required for that activity. You are responsible for any notices, consents, records, or safeguards required for Your own use. Nothing in this section makes the Licensor a controller, processor, service provider, or agent for Your processing.
+
+22. Security and operational risk
+
+Software can contain defects and can be affected by changes in the operating environment. A Plugin may fail, produce an unexpected result, stop receiving events, lose access to a service, or be incompatible with a freshGram update. It may store or change data as described by its functionality. You should keep independent backups of data that matters to You and should not rely on a Plugin as the only copy of important information.
+
+You are responsible for testing a Plugin in a way suitable for Your use and for deciding whether to run it on an account or with permissions that matter to You. You must not treat a Plugin as a substitute for a backup, security control, professional service, or human review where that substitute would be unsafe or unlawful.
+
+The Licensor does not promise to investigate every report, publish a security advisory, provide a fix, or continue distribution. A report to the Licensor does not create a support contract or make the Licensor responsible for Your systems or data.
+
+23. Enforcement and remedies
+
+If You become aware of an unauthorized copy or use of a Plugin, You may notify the Licensor using the contact information in Section 15. Include the Plugin name, version, location of the suspected copy, and any information reasonably needed to assess the report. Do not submit another person's private information unless it is necessary and lawful to do so.
+
+The Licensor may investigate suspected misuse, request that a distributor remove an unauthorized copy, revoke access to a download source, or pursue remedies available under applicable law. Nothing in this section guarantees that a platform will remove material, that a claim will succeed, or that a particular remedy will be available. The Licensor will not use a technical or legal remedy to the extent applicable law prohibits it.
+
+If a party brings a claim, each party retains any procedural rights and defenses available under applicable law. This license does not create a fixed penalty, automatic damages amount, or right to recover legal fees unless applicable law or a separate written agreement provides for it.
+
+24. No promise of confidentiality or nondisclosure
+
+Materials that the Licensor publishes publicly are not confidential merely because they are licensed. This license does not create a duty of confidentiality for material that the Licensor has made public. If the Licensor separately provides confidential information under a written confidentiality agreement, that agreement governs the confidential information it identifies.
+
+You must not claim that source code or other public material is confidential to You, or use confidentiality language to prevent the Licensor or another rights holder from exercising rights they already hold in that material.
+
+25. Notices and electronic communications
+
+The Licensor may provide license notices, version information, and other communications through the repository or the download source used for a Plugin. You should retain the copy of this license that accompanied Your copy of a Plugin. A notice sent through Telegram or GitHub is not formal service of legal process and does not replace any method required by applicable law.
+
+Contact details may change. A change to a contact link does not change the scope of the license. A message sent to the listed contact is not a grant, waiver, amendment, or acceptance of a legal claim unless the Licensor expressly confirms that result in writing.
+
+26. Export and transfer restrictions
+
+You must not transfer a Plugin or grant access to it in a way that violates applicable export-control, sanctions, or trade laws. You are responsible for determining whether those rules apply to You and Your use. This section does not identify a particular country's rules as governing law and does not expand restrictions beyond those imposed by applicable law.
+
+27. Reading and construction
+
+Section headings are for convenience and do not change the meaning of the terms. The words "including" and "for example" introduce examples and do not limit the surrounding language. "Written" includes an electronic message where applicable law recognizes it as a writing. A permission must be clear and specific; ambiguity does not create an additional license beyond the limited grant in Section 3, subject to any rule of construction that applicable law makes mandatory.
+
+28. Changes to this license
+
+The Licensor may publish a revised license for future versions. A revised license does not retroactively change the terms that applied to a version already obtained, unless You separately accept the revision or a mandatory rule of law requires a different result. The applicable license is the version that accompanied the Plugin when You obtained it, together with any later written amendment that applies to You.
+
+The Licensor may correct typographical errors or update contact information without changing the substantive rights granted. A substantive change must be identified as a new version of the license and must not be treated as accepted merely because it was posted online.
+
+29. No guaranteed outcome
+
+This document states the terms on which the Licensor offers a limited license. It cannot guarantee that every provision will be enforced in every country or every dispute. Mandatory consumer, copyright, privacy, contract, and other laws continue to apply. If a provision conflicts with a non-waivable legal right, that right controls to the extent of the conflict.
+
+END OF LICENSE
