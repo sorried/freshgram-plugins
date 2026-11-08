@@ -11,6 +11,7 @@ i create plugins for freshgram in this repository. the plugins are proprietary a
 plugins
 
 <a href="https://github.com/sorried/freshgram-plugins/coverdrop"><b><i>coverdrop</i></a> [ARCHIVED]</b> - Searches for the release cover by artist and track title, then sends the selected image as a separate message.
+
 <a href="https://github.com/sorried/freshgram-plugins/foxdrop"/><b>foxdrop</b> - Fetches a random fox photo and sends it to the open chat.
 
 ---
