@@ -76,7 +76,14 @@ async def fetch_fox():
             filename = image_name(data)
             if filename is None:
                 raise ValueError("unsupported image format")
-            return data, filename
+            compressed = freshgram.image.resize(
+                data,
+                width=1280,
+                height=1280,
+                format="jpeg",
+                quality=82,
+            )
+            return compressed["data"], "fox.jpg"
         except freshgram.Denied:
             raise
         except (ValueError, freshgram.FreshgramError) as error:
@@ -98,8 +105,8 @@ async def send_fox(event):
     try:
         data, filename = await fetch_fox()
     except freshgram.Denied as error:
-        freshgram.log(f"foxdrop: HTTPS access denied: {error}")
-        await show_notice("HTTPS access denied. Check the plugin permissions.")
+        freshgram.log(f"foxdrop: required permission denied: {error}")
+        await show_notice("A required permission was denied. Check the plugin permissions.")
         return
     except ValueError as error:
         freshgram.log(f"foxdrop: invalid image response: {error}")

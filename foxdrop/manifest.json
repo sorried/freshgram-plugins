@@ -45,6 +45,13 @@
         }
       },
       {
+        "id": "image.process",
+        "reason": {
+          "default": "Resizes and compresses fox images into JPEG before sending them as photos.",
+          "ru": "Уменьшает и сжимает фото лис в JPEG перед отправкой."
+        }
+      },
+      {
         "id": "ui.menu",
         "reason": {
           "default": "Adds the fox button to the message composer.",
@@ -82,7 +89,7 @@
   },
   "files": {
     "icons/fox.svg": "sha256-tiGYzBS/QNKeA6hcxybdBM+YxjQ53aFwLNbxmsW7N5o=",
-    "icons/icon.png": "sha256-K/J0IzwsM/A7laTUMSQCEBlwogjxROul9dR8UEmOXUc=",
-    "main.py": "sha256-mEXRRzMaAUjmjM7mWQMSDnL0AGYWKxj16aTEPZKsqsY="
+    "icons/icon.png": "sha256-BPOg0nycmitlYumDKgyfz/imkuoltM0CvKONE4yJlR0=",
+    "main.py": "sha256-moTiCT839fSUhna2xrFimpjgDx3BkwE7FCyo8ArByhg="
   }
 }
