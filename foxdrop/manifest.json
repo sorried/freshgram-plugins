@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "id": "org.freshgram.foxdrop",
+  "name": "FoxDrop",
+  "version": "0.1.0",
+  "author": {
+    "name": "@i_sorried"
+  },
+  "description": {
+    "default": "Fetches a random fox photo and sends it to the open chat.",
+    "ru": "Получает случайное фото лисы и отправляет его в открытый чат."
+  },
+  "compat": {
+    "freshgram": "*",
+    "api": 7,
+    "requires": [
+      "menu.composer"
+    ]
+  },
+  "runtime": {
+    "kind": "python",
+    "entry": "main.py"
+  },
+  "activation": {
+    "on": [
+      "menu"
+    ]
+  },
+  "permissions": {
+    "required": [
+      {
+        "id": "net.https",
+        "reason": {
+          "default": "Requests a fox image URL and downloads its image bytes from randomfox.ca.",
+          "ru": "Запрашивает URL фото и загружает байты изображения с randomfox.ca."
+        }
+      },
+      {
+        "id": "messages.send",
+        "reason": {
+          "default": "Sends the downloaded fox photo as a separate message in the open chat.",
+          "ru": "Отправляет загруженное фото лисы отдельным сообщением в открытый чат."
+        }
+      },
+      {
+        "id": "ui.menu",
+        "reason": {
+          "default": "Adds the fox button to the message composer.",
+          "ru": "Добавляет кнопку лисы рядом с полем ввода сообщения."
+        }
+      },
+      {
+        "id": "ui.composer_button",
+        "reason": {
+          "default": "Shows the plugin's menu item as a button next to the message input.",
+          "ru": "Показывает пункт плагина кнопкой рядом с полем ввода сообщения."
+        }
+      },
+      {
+        "id": "ui.toast",
+        "reason": {
+          "default": "Shows a short notice when the service or photo sending fails.",
+          "ru": "Показывает короткое сообщение при ошибке сервиса или отправки фото."
+        }
+      }
+    ]
+  },
+  "contributes": {
+    "menus": [
+      {
+        "surface": "composer",
+        "id": "foxdrop",
+        "title": "🦊"
+      }
+    ]
+  },
+  "files": {
+    "main.py": "sha256-qR9WRaXoH7qJSYN4FMsIJamXy04rLQyCcCQmKpViJ3I="
+  }
+}
