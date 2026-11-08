@@ -76,14 +76,7 @@ async def fetch_fox():
             filename = image_name(data)
             if filename is None:
                 raise ValueError("unsupported image format")
-            compressed = freshgram.image.resize(
-                data,
-                width=1280,
-                height=1280,
-                format="jpeg",
-                quality=82,
-            )
-            return compressed["data"], "fox.jpg"
+            return data, filename
         except freshgram.Denied:
             raise
         except (ValueError, freshgram.FreshgramError) as error:
