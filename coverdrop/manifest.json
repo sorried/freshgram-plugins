@@ -12,7 +12,7 @@
   },
   "compat": {
     "freshgram": "*",
-    "api": 9
+    "api": 7
   },
   "runtime": {
     "kind": "python",
