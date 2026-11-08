@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "id": "org.freshgram.foxdrop",
+  "name": "FoxDrop",
+  "version": "1.0.0",
+  "author": {
+    "name": "@i_sorried"
+  },
+  "homepage": "https://github.com/sorried/freshgram-plugins/actions/workflows/package-foxdrop.yml",
+  "icon": "icons/icon.png",
+  "description": {
+    "default": "Fetches a random fox photo and sends it to the open chat.",
+    "ru": "Получает случайное фото лисы и отправляет его в открытый чат."
+  },
+  "compat": {
+    "freshgram": "*",
+    "api": 7,
+    "requires": [
+      "menu.composer"
+    ]
+  },
+  "runtime": {
+    "kind": "python",
+    "entry": "main.py"
+  },
+  "activation": {
+    "on": [
+      "menu"
+    ]
+  },
+  "permissions": {
+    "required": [
+      {
+        "id": "net.https",
+        "reason": {
+          "default": "Requests random fox image URLs from public APIs and downloads the selected photo.",
+          "ru": "Запрашивает случайные фото лис у публичных API и загружает выбранное изображение."
+        }
+      },
+      {
+        "id": "messages.send",
+        "reason": {
+          "default": "Sends the downloaded fox photo as a separate message in the open chat.",
+          "ru": "Отправляет загруженное фото лисы отдельным сообщением в открытый чат."
+        }
+      },
+      {
+        "id": "ui.menu",
+        "reason": {
+          "default": "Adds the fox button to the message composer.",
+          "ru": "Добавляет кнопку лисы рядом с полем ввода сообщения."
+        }
+      },
+      {
+        "id": "ui.composer_button",
+        "reason": {
+          "default": "Shows the plugin's menu item as a button next to the message input.",
+          "ru": "Показывает пункт плагина кнопкой рядом с полем ввода сообщения."
+        }
+      },
+      {
+        "id": "ui.toast",
+        "reason": {
+          "default": "Shows a short notice when the service or photo sending fails.",
+          "ru": "Показывает короткое сообщение при ошибке сервиса или отправки фото."
+        }
+      }
+    ]
+  },
+  "contributes": {
+    "icons": {
+      "fox": "icons/fox.svg"
+    },
+    "menus": [
+      {
+        "surface": "composer",
+        "id": "foxdrop",
+        "title": "🦊",
+        "icon": "fox"
+      }
+    ]
+  },
+  "files": {
+    "icons/fox.svg": "sha256-tiGYzBS/QNKeA6hcxybdBM+YxjQ53aFwLNbxmsW7N5o=",
+    "icons/icon.png": "sha256-BPOg0nycmitlYumDKgyfz/imkuoltM0CvKONE4yJlR0=",
+    "main.py": "sha256-1iQRxJmVeIreOTV+iIjHNTymB5LydMLeMIv0SIn/D0I="
+  }
+}

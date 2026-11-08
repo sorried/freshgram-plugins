@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "id": "org.freshgram.coverdrop",
+  "name": "coverdrop",
+  "version": "0.1.0",
+  "author": {
+    "name": "@i_sorried"
+  },
+  "description": {
+    "default": "Search MusicBrainz for release artwork and send a selected cover as a separate message.",
+    "ru": "Ищет обложку релиза по исполнителю и названию трека и отправляет выбранное изображение отдельным сообщением."
+  },
+  "compat": {
+    "freshgram": "*",
+    "api": 7
+  },
+  "runtime": {
+    "kind": "python",
+    "entry": "main.py"
+  },
+  "activation": {
+    "on": ["command"]
+  },
+  "permissions": {
+    "required": [
+      {
+        "id": "ui.command",
+        "reason": {
+          "default": "Adds the /coverdrop command to start a cover search.",
+          "ru": "Добавляет команду /coverdrop для поиска обложки."
+        }
+      },
+      {
+        "id": "ui.dialog",
+        "reason": {
+          "default": "Shows search fields, matching releases, and a cover preview for confirmation.",
+          "ru": "Показывает поля поиска, найденные релизы и предпросмотр обложки для подтверждения."
+        }
+      },
+      {
+        "id": "net.https",
+        "reason": {
+          "default": "Sends the entered artist and track name to MusicBrainz and fetches selected artwork from Cover Art Archive.",
+          "ru": "Отправляет введённые исполнителя и название в MusicBrainz и загружает выбранную обложку из Cover Art Archive."
+        }
+      },
+      {
+        "id": "messages.send",
+        "reason": {
+          "default": "Sends the selected cover image as a separate message after confirmation.",
+          "ru": "Отправляет выбранную обложку отдельным сообщением после подтверждения."
+        }
+      }
+    ]
+  },
+  "contributes": {
+    "commands": [
+      {
+        "name": "coverdrop",
+        "description": {
+          "default": "Find and send a music cover",
+          "ru": "Найти и отправить музыкальную обложку"
+        }
+      }
+    ]
+  },
+  "files": {
+    "main.py": "sha256-kXo4xvWD+sbgu67uzU6e4NV+nNBFnswWjTf3ommPC+E="
+  }
+}
