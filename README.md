@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Telegram/Resources/art/icon256.png" width="128" alt="freshGram">
+  <img src="https://github.com/Snowy-Fluffy/freshGram/blob/main/Telegram/Resources/art/icon256.png?raw=true" width="128" alt="freshGram">
 </p>
 
 <h1 align="center">freshGram Plugins</h1>
