@@ -66,15 +66,20 @@
     ]
   },
   "contributes": {
+    "icons": {
+      "fox": "icons/fox.svg"
+    },
     "menus": [
       {
         "surface": "composer",
         "id": "foxdrop",
-        "title": "🦊"
+        "title": "🦊",
+        "icon": "fox"
       }
     ]
   },
   "files": {
-    "main.py": "sha256-qR9WRaXoH7qJSYN4FMsIJamXy04rLQyCcCQmKpViJ3I="
+    "icons/cat.svg": "sha256-xqdLlsKDO1gzmwcqHlhhZ7l3I8ZLwYkFNR4XROSwwH8=",
+    "main.py": "sha256-z/W3tGUHO8FfGKM4AhnBeZpa9n84qIrRfxlyWfmcTlE="
   }
 }

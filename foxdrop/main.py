@@ -16,28 +16,28 @@ def image_name(data):
     return None
 
 
-async def show_error(message):
+async def show_notice(message):
     try:
         await aio.ui.toast(message, duration=5)
     except freshgram.FreshgramError as error:
-        freshgram.log(f"foxdrop: не удалось показать ошибку: {error}")
+        freshgram.log(f"foxdrop: failed to show notice: {error}")
 
 
 async def fetch_fox():
     response = await aio.net.get(API_URL, headers={"Accept": "application/json"}, timeout=15000)
     if not response.ok:
-        raise ValueError(f"сервис лис недоступен: HTTP {response.status}.")
+        raise ValueError(f"Fox service unavailable: HTTP {response.status}.")
 
     try:
         payload = response.json()
     except ValueError as error:
-        raise ValueError("сервис вернул некорректный JSON.") from error
+        raise ValueError("Fox service returned invalid JSON.") from error
     if not isinstance(payload, dict) or not isinstance(payload.get("image"), str):
-        raise ValueError("сервис не вернул адрес изображения.")
+        raise ValueError("Fox service did not return an image URL.")
 
     image_url = payload["image"]
     if not image_url.isascii() or len(image_url) > 2048:
-        raise ValueError("сервис вернул недопустимый адрес изображения.")
+        raise ValueError("Fox service returned an invalid image URL.")
     try:
         parsed = urlsplit(image_url)
         valid_url = (
@@ -48,20 +48,20 @@ async def fetch_fox():
             and not parsed.password
         )
     except ValueError as error:
-        raise ValueError("сервис вернул недопустимый адрес изображения.") from error
+        raise ValueError("Fox service returned an invalid image URL.") from error
     if not valid_url:
-        raise ValueError("сервис вернул недопустимый адрес изображения.")
+        raise ValueError("Fox service returned an invalid image URL.")
 
     image_response = await aio.net.get(image_url, timeout=20000)
     if not image_response.ok:
-        raise ValueError(f"не удалось загрузить фото: HTTP {image_response.status}.")
+        raise ValueError(f"Could not download fox image: HTTP {image_response.status}.")
 
     data = image_response.body
     if not data or len(data) > MAX_IMAGE_SIZE:
-        raise ValueError("фото пустое или превышает 16 МиБ.")
+        raise ValueError("Fox image is empty or larger than 16 MiB.")
     filename = image_name(data)
     if filename is None:
-        raise ValueError("сервис вернул фото неизвестного формата.")
+        raise ValueError("Fox service returned an unsupported image format.")
     return data, filename
 
 
@@ -69,22 +69,24 @@ async def fetch_fox():
 async def send_fox(event):
     chat = event.get("chat")
     if not isinstance(chat, int) or isinstance(chat, bool) or chat <= 0:
-        await show_error("откройте чат, чтобы отправить лису.")
+        await show_notice("Open a chat to send a fox.")
         return
+
+    await show_notice("Loading a fox…")
 
     try:
         data, filename = await fetch_fox()
     except freshgram.Denied as error:
-        freshgram.log(f"foxdrop: доступ запрещён: {error}")
-        await show_error("нет доступа к HTTPS. проверьте разрешения плагина.")
+        freshgram.log(f"foxdrop: HTTPS access denied: {error}")
+        await show_notice("HTTPS access denied. Check the plugin permissions.")
         return
     except ValueError as error:
-        freshgram.log(f"foxdrop: ошибка данных изображения: {error}")
-        await show_error(str(error))
+        freshgram.log(f"foxdrop: invalid image response: {error}")
+        await show_notice(str(error))
         return
     except freshgram.FreshgramError as error:
-        freshgram.log(f"foxdrop: ошибка загрузки: {error}")
-        await show_error("не удалось загрузить лису. проверьте подключение.")
+        freshgram.log(f"foxdrop: image request failed: {error}")
+        await show_notice("Could not load a fox. Check your connection.")
         return
 
     try:
@@ -92,11 +94,11 @@ async def send_fox(event):
             chat, data, filename, kind="auto", topic=event.get("topic", 0), reply_to=0,
         )
     except freshgram.Denied as error:
-        freshgram.log(f"foxdrop: отправка запрещена: {error}")
-        await show_error("нет разрешения на отправку фото в этот чат.")
+        freshgram.log(f"foxdrop: sending denied: {error}")
+        await show_notice("Photo sending is not allowed in this chat.")
     except freshgram.FreshgramError as error:
-        freshgram.log(f"foxdrop: ошибка отправки: {error}")
-        await show_error("не удалось подтвердить отправку фото. проверьте чат.")
+        freshgram.log(f"foxdrop: send failed: {error}")
+        await show_notice("Could not send the photo. Check the chat and try again.")
 
 
 freshgram.run()
