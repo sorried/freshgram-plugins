@@ -2,10 +2,12 @@
   "schema": 1,
   "id": "org.freshgram.foxdrop",
   "name": "FoxDrop",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": {
     "name": "@i_sorried"
   },
+  "homepage": "https://github.com/sorried/freshgram-plugins/actions/workflows/package-foxdrop.yml",
+  "icon": "icons/icon.png",
   "description": {
     "default": "Fetches a random fox photo and sends it to the open chat.",
     "ru": "Получает случайное фото лисы и отправляет его в открытый чат."
