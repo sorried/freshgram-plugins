@@ -1,0 +1,119 @@
+name: package plugins
+
+on:
+  workflow_dispatch:
+    inputs:
+      plugin:
+        description: plugin directory to package, or leave empty to package all plugins
+        required: false
+        type: string
+  push:
+    paths:
+      - "*/**"
+      - ".github/workflows/package-plugins.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: select plugins
+        id: select
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          INPUT_PLUGIN: ${{ inputs.plugin }}
+          BEFORE_SHA: ${{ github.event.before }}
+          CURRENT_SHA: ${{ github.sha }}
+        run: |
+          if [ "$EVENT_NAME" = workflow_dispatch ]; then
+            if [ -n "$INPUT_PLUGIN" ]; then
+              candidates="$INPUT_PLUGIN"
+            else
+              candidates=$(find . -mindepth 2 -maxdepth 2 -name manifest.json -printf '%h\n' | sed 's#^./##' | cut -d/ -f1 | sort -u)
+            fi
+          elif [ "$BEFORE_SHA" != "0000000000000000000000000000000000000000" ] && git cat-file -e "$BEFORE_SHA^{commit}" 2>/dev/null; then
+            candidates=$(git diff --name-only "$BEFORE_SHA" "$CURRENT_SHA" | cut -d/ -f1 | sort -u)
+          else
+            candidates=$(find . -mindepth 2 -maxdepth 2 -name manifest.json -printf '%h\n' | sed 's#^./##' | cut -d/ -f1 | sort -u)
+          fi
+
+          selected=
+          for plugin in $candidates; do
+            [ "$plugin" != coverdrop ] || continue
+            [ -f "$plugin/manifest.json" ] || continue
+            case "$plugin" in
+              *[!A-Za-z0-9_-]*|'') echo "invalid plugin directory: $plugin" >&2; exit 1 ;;
+            esac
+            selected="$selected $plugin"
+          done
+
+          if [ -z "$selected" ]; then
+            echo "plugins=" >> "$GITHUB_OUTPUT"
+            echo "No eligible plugin changes found."
+            exit 0
+          fi
+          echo "plugins=${selected# }" >> "$GITHUB_OUTPUT"
+          echo "Selected:${selected}"
+
+      - name: stop when no plugin changed
+        if: steps.select.outputs.plugins == ''
+        run: echo "Nothing to package."
+
+      - uses: actions/checkout@v7
+        if: steps.select.outputs.plugins != ''
+        with:
+          repository: Snowy-Fluffy/freshGram
+          ref: c530acc8247d2bcf0e5f557b5f6e23acbcf72ba5
+          path: freshGram
+          persist-credentials: false
+
+      - name: install build dependencies
+        if: steps.select.outputs.plugins != ''
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes cmake g++ libssl-dev zlib1g-dev
+
+      - name: prepare wasmtime
+        if: steps.select.outputs.plugins != ''
+        run: |
+          mkdir -p freshGram/Telegram/plugins_host/third_party
+          curl --fail --location --retry 5 --retry-all-errors --retry-delay 2 \
+            --connect-timeout 20 --max-time 180 \
+            --output /tmp/wasmtime.tar.xz \
+            https://github.com/bytecodealliance/wasmtime/releases/download/v50.0.0/wasmtime-v50.0.0-x86_64-linux-c-api.tar.xz
+          echo "631643d8be5dac2a1abe026528f0ca18a515bce275bcfa7eb9731c9468a592f1  /tmp/wasmtime.tar.xz" | sha256sum --check
+          tar -xJf /tmp/wasmtime.tar.xz -C freshGram/Telegram/plugins_host/third_party
+
+      - name: build fgpl_tool
+        if: steps.select.outputs.plugins != ''
+        run: |
+          cmake -S freshGram/Telegram/plugins_host \
+            -B freshGram/Telegram/plugins_host/build \
+            -D CMAKE_BUILD_TYPE=Release \
+            -D FGPL_BUILD_TESTS=OFF
+          cmake --build freshGram/Telegram/plugins_host/build --target fgpl_tool --parallel 2
+
+      - name: package and verify changed plugins
+        if: steps.select.outputs.plugins != ''
+        env:
+          PLUGINS: ${{ steps.select.outputs.plugins }}
+        run: |
+          mkdir -p dist
+          for plugin in $PLUGINS; do
+            freshGram/Telegram/plugins_host/build/fgpl_tool pack "$plugin" "dist/$plugin.fgpl"
+            freshGram/Telegram/plugins_host/build/fgpl_tool verify "dist/$plugin.fgpl"
+          done
+
+      - uses: actions/upload-artifact@v7
+        if: steps.select.outputs.plugins != ''
+        with:
+          name: freshgram-plugins
+          path: dist/*.fgpl
+          if-no-files-found: error
+          archive: false
