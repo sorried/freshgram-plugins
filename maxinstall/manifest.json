@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "id": "org.sorried.maxinstall",
+  "name": "MaxInstall",
+  "version": "1.0.0",
+  "author": {
+    "name": "@i_sorried"
+  },
+  "homepage": "https://github.com/sorried/freshgram-plugins/tree/main/maxinstall",
+  "description": "Подставляет подготовленный текст в черновик сообщения.",
+  "compat": {
+    "freshgram": "*",
+    "api": 7,
+    "requires": [
+      "menu.composer"
+    ]
+  },
+  "runtime": {
+    "kind": "python",
+    "entry": "main.py"
+  },
+  "activation": {
+    "on": [
+      "menu"
+    ]
+  },
+  "permissions": {
+    "required": [
+      {
+        "id": "ui.menu",
+        "reason": "Добавляет пункт MaxInstall в меню панели ввода сообщения."
+      },
+      {
+        "id": "ui.composer_button",
+        "reason": "Показывает пункт MaxInstall кнопкой рядом с полем ввода сообщения."
+      },
+      {
+        "id": "ui.dialog",
+        "reason": "Запрашивает имя и подтверждение перед заменой черновика."
+      },
+      {
+        "id": "composer.draft",
+        "reason": "Заменяет черновик сообщения в чате, из которого открыта кнопка."
+      }
+    ]
+  },
+  "contributes": {
+    "icons": {
+      "pencil": "icons/pencil.svg"
+    },
+    "menus": [
+      {
+        "surface": "composer",
+        "id": "maxinstall",
+        "title": "MaxInstall",
+        "icon": "pencil"
+      }
+    ]
+  },
+  "files": {
+    "icons/pencil.svg": "sha256-W5yaH3SbdwcWUbSloeL3cF99QroA7gTnEFT6F+0hKgc=",
+    "main.py": "sha256-a65p3ujbC0HhwednrnFJQvMADmf098Jn7B0SZv7XqI0="
+  }
+}
