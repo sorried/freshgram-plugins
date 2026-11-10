@@ -4,11 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       plugin:
-        description: plugin directory to package, or leave empty to package all plugins
+        description: plugin directory to package (for example maxinstall), or leave empty to package all plugins
         required: false
         type: string
   push:
     paths:
+      - "maxinstall/**"
       - "*/**"
       - ".github/workflows/package-plugins.yml"
 
